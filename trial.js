@@ -11,6 +11,12 @@ const imageListWrapper = document.querySelector(".imagelist-wrapper");
 runEventListeners();
 function runEventListeners(){
     form.addEventListener("submit", search)
+    clearButton.addEventListener("click", clear)
+}
+
+function clear() {
+    console.log("Hakan")     // In order to test function
+    searchInput.value = "";
 }
 
 
@@ -25,13 +31,31 @@ function search(e){
   
     })
     .then((res)=>res.json())
-    .then((data)=>{console.log(data)})
-        // Array.from(data.results).forEach((image)=>{
-        //     // console.log(image.urls.small)
-        //     addImageToUI(image.urls.small)
-        //    })
-        // })
+    .then((data)=>{     // console.log(data)})    console.log(data.results)    
+        Array.from(data.results).forEach((image)=>{
+            // console.log(image.urls.small)   // For check whether data received or not
+            addImageToUI(image.urls.small)
+           })
+        })
         .catch((err)=> console.log(err));    
     
         e.preventDefault();
 }
+
+function addImageToUI(url){
+    // <div class="card">
+    //      <image src="" alt=""></image>  // In order to visualize structure
+    // </div>
+
+    console.log(imageListWrapper) // For check whether data received or not
+    const div = document.createElement("div");
+    div.className = "card"
+
+    const img =document.createElement("img");
+    img.setAttribute("src",url);
+    img.height='400';
+    img.width ='400';
+
+    div.append(img);
+    imageListWrapper.append(div)
+};
