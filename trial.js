@@ -14,5 +14,19 @@ function runEvetListeners(){
 
 
 function search(e){
-    consol
+    const value = searchInput.value.trim();
+
+    // Request Parameter spring-Rest API
+    fetch(`https://api.unsplash.com/search/photos?query=${value}`,{
+        method : "GET",
+        headers : {
+            Authorization: "Client-ID  6eGKEC1yCeOOcIwo7IPzM-oxiwbZV70EqXt86oe36P4"
+        }    
+    })
+    .then((res)=>res.json())
+    .then((data)=>console.log(data))
+    .catch((err)=>console.log(err))
+    
+
+    e.preventDefault();
 }
