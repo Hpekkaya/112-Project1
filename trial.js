@@ -4,6 +4,7 @@ const searchInput = document.querySelector("#searchInput");
 const buttonWrapper= document.querySelector(".button-wrapper");
 const searchButton = document.querySelector("#searchButton");
 const clearButton = document.querySelector("#clearButton");
+const clearButtonConsole = document.querySelector("#clearButtonConsole");
 const imageListWrapper = document.querySelector(".imagelist-wrapper");
 
 
@@ -11,12 +12,20 @@ const imageListWrapper = document.querySelector(".imagelist-wrapper");
 runEventListeners();
 function runEventListeners(){
     form.addEventListener("submit", search)
-    clearButton.addEventListener("click", clear)
+    clearButton.addEventListener("click", clear);    
+    clearButtonConsole.addEventListener("click", clearConsole);    
 }
 
 function clear() {
     console.log("Hakan")     // In order to test function
     searchInput.value = "";
+    Array.from(imageListWrapper.children).forEach((child)=>child.remove())
+    
+}
+
+function clearConsole (){
+   searchInput.value = "";
+   console.clear(); 
 }
 
 
