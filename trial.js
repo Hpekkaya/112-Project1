@@ -19,7 +19,8 @@ function runEventListeners(){
 function clear() {
     console.log("Hakan")     // In order to test function
     searchInput.value = "";
-    Array.from(imageListWrapper.children).forEach((child)=>child.remove())
+    imageListWrapper.innerHTML = ""; //Alternative to the below command
+    // Array.from(imageListWrapper.children).forEach((child)=>child.remove())
     
 }
 
